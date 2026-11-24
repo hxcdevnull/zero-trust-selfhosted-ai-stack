@@ -1,0 +1,24 @@
+{
+	auto_https off
+}
+
+:80 {
+	@n8n host {$DOMAIN_N8N}
+	handle @n8n {
+		reverse_proxy n8n:5678
+	}
+
+	@nocodb host {$DOMAIN_NOCODB}
+	handle @nocodb {
+		reverse_proxy nocodb:8080
+	}
+
+	@metabase host {$DOMAIN_METABASE}
+	handle @metabase {
+		reverse_proxy metabase:3000
+	}
+
+	handle {
+		respond "Forbidden" 403
+	}
+}

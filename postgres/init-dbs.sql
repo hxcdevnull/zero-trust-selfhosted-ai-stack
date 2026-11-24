@@ -1,0 +1,10 @@
+CREATE DATABASE n8n;
+CREATE DATABASE nocodb;
+CREATE DATABASE metabase;
+CREATE DATABASE vector_store;
+
+\connect n8n
+CREATE EXTENSION IF NOT EXISTS vector;
+
+\connect vector_store
+CREATE EXTENSION IF NOT EXISTS vector;
